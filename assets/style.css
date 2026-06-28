@@ -1,0 +1,627 @@
+/* ── Expense Tracker — Premium Space-Dark Design System ── */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* Global Font Apply */
+html, body, [class*="st-emotion-cache"] {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Fix for Material Icons rendering as raw text due to font overrides */
+.material-icons, [class*="material-icons"], [data-testid="stIconMaterial"], [data-testid="collapsedControl"] svg {
+    font-family: 'Material Icons', 'Material Symbols Outlined', 'Material Symbols Rounded', 'Material Symbols Sharp' !important;
+}
+
+/* Hide tab scroll/overflow buttons in Streamlit tabs */
+button[aria-label="Scroll tabs right"],
+button[aria-label="Scroll tabs left"] {
+    display: none !important;
+}
+
+/* Elegant scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(8, 7, 16, 0.5);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(168, 85, 247, 0.2);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(168, 85, 247, 0.4);
+}
+
+/* ── Sidebar Navigation Overhaul ── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+    border-right: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Reset standard radio component styling in sidebar */
+[data-testid="stSidebar"] .stRadio {
+    padding: 0 !important;
+}
+
+/* Style the label visibility wrapper */
+[data-testid="stSidebar"] div[role="radiogroup"] {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+}
+
+/* Modern navigation items */
+[data-testid="stSidebar"] div[role="radiogroup"] label {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-radius: 12px !important;
+    padding: 10px 16px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Text inside navigation label */
+[data-testid="stSidebar"] div[role="radiogroup"] label p,
+[data-testid="stSidebar"] div[role="radiogroup"] label span,
+[data-testid="stSidebar"] div[role="radiogroup"] label [data-testid="stMarkdownContainer"] p {
+    color: #475569 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+    transition: color 0.25s ease !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+
+/* Hover style for navigation items */
+[data-testid="stSidebar"] div[role="radiogroup"] label:hover {
+    background: rgba(124, 58, 237, 0.06) !important;
+    border-color: rgba(124, 58, 237, 0.15) !important;
+    transform: translateX(4px) !important;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label:hover p {
+    color: #0f172a !important;
+}
+
+/* Selected state using input:checked sibling selector */
+[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(124, 58, 237, 0.02) 100%) !important;
+    border: 1px solid rgba(124, 58, 237, 0.25) !important;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.05) !important;
+}
+
+[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) p,
+[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) span {
+    color: #7c3aed !important;
+    font-weight: 700 !important;
+}
+
+/* Hide standard radio dot circle (using child selector to avoid hiding label text descendants) */
+[data-testid="stSidebar"] div[role="radiogroup"] label > div:first-child {
+    display: none !important;
+}
+
+/* ── Metric Cards ── */
+[data-testid="stMetric"] {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    backdrop-filter: blur(16px) !important;
+    border-radius: 18px !important;
+    padding: 22px 24px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.03) !important;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 40px rgba(168, 85, 247, 0.1) !important;
+    border-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+[data-testid="stMetric"] label {
+    color: #475569 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.1em !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+
+[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    font-size: 2rem !important;
+    font-family: 'Outfit', sans-serif !important;
+    letter-spacing: -0.02em !important;
+    margin-top: 4px !important;
+}
+
+/* Specific Border glows for Metric Cards */
+/* Card 1 (Income / Top row) */
+div[data-testid="stHorizontalBlock"] > div:nth-child(1) [data-testid="stMetric"] {
+    border-top: 3px solid #10b981 !important;
+}
+div[data-testid="stHorizontalBlock"] > div:nth-child(1) [data-testid="stMetric"]:hover {
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.12) !important;
+    border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Card 2 (Expenses) */
+div[data-testid="stHorizontalBlock"] > div:nth-child(2) [data-testid="stMetric"] {
+    border-top: 3px solid #ec4899 !important;
+}
+div[data-testid="stHorizontalBlock"] > div:nth-child(2) [data-testid="stMetric"]:hover {
+    box-shadow: 0 12px 40px rgba(236, 72, 153, 0.12) !important;
+    border-color: rgba(236, 72, 153, 0.3) !important;
+}
+
+/* Card 3 (Balance) */
+div[data-testid="stHorizontalBlock"] > div:nth-child(3) [data-testid="stMetric"] {
+    border-top: 3px solid #3b82f6 !important;
+}
+div[data-testid="stHorizontalBlock"] > div:nth-child(3) [data-testid="stMetric"]:hover {
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.12) !important;
+    border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Card 4 (Savings) */
+div[data-testid="stHorizontalBlock"] > div:nth-child(4) [data-testid="stMetric"] {
+    border-top: 3px solid #f59e0b !important;
+}
+div[data-testid="stHorizontalBlock"] > div:nth-child(4) [data-testid="stMetric"]:hover {
+    box-shadow: 0 12px 40px rgba(245, 158, 11, 0.12) !important;
+    border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* ── Form containers ── */
+[data-testid="stForm"] {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    border-radius: 20px !important;
+    padding: 28px !important;
+    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.03) !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+/* ── Buttons ── */
+.stButton > button, .stFormSubmitButton > button {
+    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 10px 28px !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    font-family: 'Outfit', sans-serif !important;
+    letter-spacing: 0.03em !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.25) !important;
+    width: 100% !important;
+}
+
+.stButton > button:hover, .stFormSubmitButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4) !important;
+    color: #ffffff !important;
+}
+
+.stButton > button:active, .stFormSubmitButton > button:active {
+    transform: translateY(0) !important;
+}
+
+/* ── Download buttons ── */
+.stDownloadButton > button {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    font-family: 'Outfit', sans-serif !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25) !important;
+    transition: all 0.3s ease !important;
+}
+
+.stDownloadButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4) !important;
+    color: white !important;
+}
+
+/* ── Text Inputs and Selectboxes ── */
+div[data-baseweb="input"], div[data-baseweb="select"], textarea {
+    border-radius: 10px !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* ── Dataframes ── */
+[data-testid="stDataFrame"] {
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* ── Expanders ── */
+.streamlit-expanderHeader {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ── Tabs ── */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 10px !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    padding: 6px !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 10px !important;
+    padding: 10px 24px !important;
+    font-weight: 700 !important;
+    color: #9ca3af !important;
+    transition: all 0.25s ease !important;
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] {
+    background-color: rgba(168, 85, 247, 0.15) !important;
+    color: #a855f7 !important;
+    border: 1px solid rgba(168, 85, 247, 0.25) !important;
+}
+
+/* ── Success / Warning / Error messages ── */
+.stAlert {
+    border-radius: 14px !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    font-weight: 500 !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* ── Header styling ── */
+h1 {
+    font-family: 'Outfit', sans-serif !important;
+    background: linear-gradient(135deg, #0f172a 0%, #7c3aed 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    font-size: 2.8rem !important;
+}
+
+h2, h3 {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: #0f172a !important;
+}
+
+/* Divider styling */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.1), transparent) !important;
+    margin: 28px 0 !important;
+}
+
+/* ── Premium Auth Screen Overhaul ── */
+
+/* Force light background for the entire app only during auth phase */
+.stApp:has(.auth-page-marker) {
+    background-color: #f8fafc !important;
+    background-image: none !important;
+    overflow-x: hidden !important;
+}
+
+/* Hide standard top header/decoration line in Streamlit on login screen */
+.stApp:has(.auth-page-marker) [data-testid="stHeader"],
+.stApp:has(.auth-page-marker) [data-testid="stDecoration"] {
+    display: none !important;
+}
+
+/* Center the login container elements vertically & horizontally */
+.stApp:has(.auth-page-marker) [data-testid="stAppViewBlockContainer"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    padding: 2rem 1rem !important;
+}
+
+.stApp:has(.auth-page-marker) [data-testid="stAppViewBlockContainer"] > div {
+    max-width: 480px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+}
+
+/* Animated Floating Glow Blobs (Light Theme Version) */
+.auth-bg-glow-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+    background: #f8fafc;
+}
+
+.auth-mesh-glow-1 {
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 60%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(124, 58, 237, 0) 70%) !important;
+    filter: blur(80px) !important;
+    animation: authFloatingGlow1 15s ease-in-out infinite alternate !important;
+}
+
+.auth-mesh-glow-2 {
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 60%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0) 70%) !important;
+    filter: blur(80px) !important;
+    animation: authFloatingGlow2 12s ease-in-out infinite alternate-reverse !important;
+}
+
+@keyframes authFloatingGlow1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(8%, 10%) scale(1.15); }
+}
+
+@keyframes authFloatingGlow2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-8%, -10%) scale(1.15); }
+}
+
+/* Custom Auth Header styling */
+.custom-auth-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    animation: authFadeIn 0.8s ease-out forwards;
+}
+
+.custom-auth-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.custom-brand-emoji {
+    font-size: 2.6rem;
+    filter: drop-shadow(0 4px 12px rgba(124, 58, 237, 0.2));
+    animation: emojiFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes emojiFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+
+.custom-brand-name {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #0f172a 0%, #7c3aed 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    filter: none !important;
+}
+
+.custom-auth-subtitle {
+    font-size: 0.92rem;
+    color: #475569 !important;
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* Custom Form Subheader */
+.custom-form-title {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0f172a !important;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+/* Style the tabs inside auth page (Light Theme) */
+.stApp:has(.auth-page-marker) .stTabs {
+    border: none !important;
+}
+
+.stApp:has(.auth-page-marker) .stTabs [data-baseweb="tab-list"] {
+    background-color: rgba(15, 23, 42, 0.02) !important;
+    border: 1px solid rgba(15, 23, 42, 0.04) !important;
+    border-radius: 14px !important;
+    padding: 5px !important;
+    gap: 6px !important;
+    width: 100% !important;
+}
+
+.stApp:has(.auth-page-marker) .stTabs [data-baseweb="tab"] {
+    flex: 1 !important;
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    color: #475569 !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.stApp:has(.auth-page-marker) .stTabs [data-baseweb="tab"]:hover {
+    color: #0f172a !important;
+    background-color: rgba(15, 23, 42, 0.02) !important;
+}
+
+.stApp:has(.auth-page-marker) .stTabs [data-baseweb="tab"][aria-selected="true"] {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(124, 58, 237, 0.05) 100%) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(124, 58, 237, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.15) !important;
+}
+
+/* Hide Streamlit default tab accent line */
+.stApp:has(.auth-page-marker) .stTabs [data-baseweb="tab-highlight-bar"] {
+    display: none !important;
+}
+
+/* Glassmorphism Forms styling in auth card (Light Theme) */
+.stApp:has(.auth-page-marker) [data-testid="stForm"] {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 
+                0 0 40px rgba(124, 58, 237, 0.05) !important;
+    padding: 32px !important;
+    margin-top: 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    animation: authFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes authFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes authFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Labels style */
+.stApp:has(.auth-page-marker) [data-testid="stForm"] label [data-testid="stMarkdownContainer"] p {
+    color: #475569 !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* Text Inputs in login page (Light Theme) */
+.stApp:has(.auth-page-marker) [data-testid="stForm"] div[data-baseweb="input"] {
+    background-color: rgba(15, 23, 42, 0.02) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 2px 6px !important;
+    transition: all 0.25s ease-in-out !important;
+}
+
+.stApp:has(.auth-page-marker) [data-testid="stForm"] div[data-baseweb="input"]:focus-within {
+    border-color: #7c3aed !important;
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.2) !important;
+    background-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+.stApp:has(.auth-page-marker) [data-testid="stForm"] div[data-baseweb="input"] input {
+    color: #0f172a !important;
+    font-weight: 500 !important;
+}
+
+.stApp:has(.auth-page-marker) [data-testid="stForm"] div[data-baseweb="input"] input::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Submit Button in Login */
+.stApp:has(.auth-page-marker) .stFormSubmitButton > button {
+    background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    height: 46px !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    font-family: 'Outfit', sans-serif !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.25) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin-top: 10px !important;
+    width: 100% !important;
+}
+
+.stApp:has(.auth-page-marker) .stFormSubmitButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4) !important;
+    color: white !important;
+}
+
+.stApp:has(.auth-page-marker) .stFormSubmitButton > button:active {
+    transform: translateY(0) !important;
+}
+
+/* Success / Error Alerts inside Auth card */
+.stApp:has(.auth-page-marker) .stAlert {
+    border-radius: 12px !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    padding: 10px 16px !important;
+}
+
+.stApp:has(.auth-page-marker) .stAlert p {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: #0f172a !important;
+}
+
+/* Custom Auth Footer Credentials */
+.custom-auth-footer-container {
+    max-width: 480px;
+    width: 100%;
+    margin: 18px auto 0 auto;
+    animation: authFadeIn 1s ease-out forwards;
+}
+
+.custom-auth-footer {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #475569;
+    border-top: 1px solid rgba(15, 23, 42, 0.08) !important;
+    padding-top: 16px;
+}
+
+.custom-auth-footer strong {
+    color: #7c3aed !important;
+}
